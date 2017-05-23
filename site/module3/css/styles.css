@@ -6,7 +6,7 @@ body {
 
 /** HEADER **/
 #header-nav {
-  background-color: grey;
+  background-color:#ffb3b3 ;
   border-radius: 0;
   border: 0;
 }
@@ -61,6 +61,35 @@ font-size: 1em;
 }
 
 .container .chicken{
-	background: grey;
+	background:#ffcccc ;
 	margin-top: 2%;
+	
+	box-sizing: border-box;
+
 }
+/********** Medium devices only **********/
+@media (min-width: 992px) and (max-width: 1199px) {
+  /* Header */
+ .container .chicken{
+ 	margin-left: 8.33%;
+ 	}
+ .container .chicken1{
+ 	margin-right: 8.33%;
+ 	}
+
+ }
+ @media (min-width: 1199px) {
+  /* Header */
+ .container .chicken{
+ 	margin-left: 8.33%;
+ 	}
+ .container .chicken1{
+ 	margin-right: 8.33%;
+ 	}
+
+ }
+ a{
+ 	color:blue;
+ 	  font-size: .9em;
+  font-style: italic;
+ }
