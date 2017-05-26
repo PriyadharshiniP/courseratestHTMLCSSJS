@@ -1,3 +1,11 @@
+jQuery.support.cors = true;
+jQuery(function() {
+$.ajax({
+    crossDomain : true,
+    dataType: 'html',
+    //...
+    });
+});
 $(function () { // Same as document.addEventListener("DOMContentLoaded"...
 
   // Same as document.querySelector("#navbarToggle").addEventListener("blur",...
