@@ -88,7 +88,7 @@ $ajaxUtils.sendGetRequest(
 });
 // *** finish **
 
-console.log("hello1");
+//console.log("hello1");
 // Builds HTML for the home page based on categories array
 // returned from the server.
 function buildAndShowHomeHTML (categories) {
@@ -104,7 +104,7 @@ function buildAndShowHomeHTML (categories) {
       // var chosenCategoryShortName = ....
 
 var chosenCategoryShortName = chooseRandomCategory(categories);      // TODO: STEP 3: Substitute {{randomCategoryShortName}} in the home html snippet with the
-console.log("hello2"+homeHtml+":LLLL::"+categories[chosenCategoryShortName]);
+//console.log("hello2"+homeHtml+":LLLL::"+chosenCategoryShortName.short_name);
       // chosen category from STEP 2. Use existing insertProperty function for that purpose.
       // Look through this code for an example of how to do use the insertProperty function.
       // WARNING! You are inserting something that will have to result in a valid Javascript
@@ -118,16 +118,16 @@ console.log("hello2"+homeHtml+":LLLL::"+categories[chosenCategoryShortName]);
       // var homeHtmlToInsertIntoMainPage = ....
  var homeHtmlToInsertIntoMainPage =insertProperty(homeHtml,
                      "randomCategoryShortName",
-                   categories[chosenCategoryShortName]);
- console.log("hello3");
+                  "'"+ chosenCategoryShortName.short_name+"'");
+// console.log("hello3");
 
       // TODO: STEP 4: Insert the the produced HTML in STEP 3 into the main page
       // Use the existing insertHtml function for that purpose. Look through this code for an example
       // of how to do that.
       // ....
 insertHtml("#main-content", homeHtmlToInsertIntoMainPage);
-console.log("hello4");
-console.log(homeHtmlToInsertIntoMainPage);
+//console.log("hello4");
+//console.log(homeHtmlToInsertIntoMainPage);
     },
     false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
 }
@@ -137,7 +137,7 @@ console.log(homeHtmlToInsertIntoMainPage);
 function chooseRandomCategory (categories) {
   // Choose a random index into the array (from 0 inclusively until array length (exclusively))
   var randomArrayIndex = Math.floor(Math.random() * categories.length);
-console.log("Return ::"+randomArrayIndex+"::"+categories[randomArrayIndex]);
+//console.log("Return ::"+randomArrayIndex+"::"+categories[randomArrayIndex]);
   // return category object with that randomArrayIndex
   return categories[randomArrayIndex];
 }
@@ -146,19 +146,22 @@ console.log("Return ::"+randomArrayIndex+"::"+categories[randomArrayIndex]);
 // Load the menu categories view
 dc.loadMenuCategories = function () {
   showLoading("#main-content");
+
   $ajaxUtils.sendGetRequest(
     allCategoriesUrl,
     buildAndShowCategoriesHTML);
 };
 
-
+  
 // Load the menu items view
 // 'categoryShort' is a short_name for a category
 dc.loadMenuItems = function (categoryShort) {
   showLoading("#main-content");
+
   $ajaxUtils.sendGetRequest(
     menuItemsUrl + categoryShort,
     buildAndShowMenuItemsHTML);
+   
 };
 
 
@@ -166,6 +169,7 @@ dc.loadMenuItems = function (categoryShort) {
 // from the server
 function buildAndShowCategoriesHTML (categories) {
   // Load title snippet of categories page
+ 
   $ajaxUtils.sendGetRequest(
     categoriesTitleHtml,
     function (categoriesTitleHtml) {
@@ -195,6 +199,7 @@ function buildCategoriesViewHtml(categories,
                                  categoryHtml) {
 
   var finalHtml = categoriesTitleHtml;
+ 
   finalHtml += "<section class='row'>";
 
   // Loop over categories
@@ -222,6 +227,7 @@ function buildCategoriesViewHtml(categories,
 // from the server
 function buildAndShowMenuItemsHTML (categoryMenuItems) {
   // Load title snippet of menu items page
+   // console.log( "buildAndShowMenuItemsHTML" );
   $ajaxUtils.sendGetRequest(
     menuItemsTitleHtml,
     function (menuItemsTitleHtml) {
@@ -249,7 +255,7 @@ function buildAndShowMenuItemsHTML (categoryMenuItems) {
 function buildMenuItemsViewHtml(categoryMenuItems,
                                 menuItemsTitleHtml,
                                 menuItemHtml) {
-  console.log(menuItemsTitleHtml);
+//  console.log("buildMenuItemsViewHtml");
 if (menuItemsTitleHtml == null || menuItemsTitleHtml == undefined){
   menuItemsTitleHtml = "";
 }
